@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王彦淳 · Yolanda Wang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300&display=swap" rel="stylesheet">
+
+<script>
+/* ============================================================
+   ✏️  彦淳的内容区 — 只需要改这里！
+   ============================================================
+
+   📌 改完保存文件，推到 GitHub 就自动更新了。
+   📌 注意：文字里如果有单引号 ' 请改成 &#39;
+   ============================================================ */
+
+const DATA = {
+
+  /* —— 个人简介 —— */
+  bio: {
+    eyebrow_zh: "",
+    eyebrow_en: "",
+    story_zh: `最近写正经的cv和linkedin profile很烦于是决定建个个人网站记录完整的故事
+
+[在这里写你的故事。你从哪里来？对什么着迷？正在创造什么？用你自己的声音说话。]`,
+    story_en: `Hi, I'm Yolanda —
+
+[Write your story here. Where are you from? What fascinates you? What are you creating? Speak in your own voice.]`,
+  },
+
+  /* —— 技能 —— 在每个分类的 [] 里加 "技能名", 用逗号隔开 */
+  skills: {
+    "Web":                   [],
+    "Programming and Tools": ["Python", "Java", "C", "R"],
+    "Sports":                ["Archery", "Fencing", "Horse Riding", "Figure Skating", "Surfing"],
+    "Design":                ["Lightroom"],
+    "Other":                 ["LaTeX"],
+  },
+
+  /* —— 故事 / 工作经历 —— */
+  stories: [
+    {
+      date_zh:  "2023 年 — 至今",
+      date_en:  "2023 — Present",
+      place:    "公司 / 项目名称",
+      role_zh:  "职位 / 角色",
+      role_en:  "Title / Role",
+      desc_zh:  "在这里写这段经历的故事。",
+      desc_en:  "Write your story here.",
+    },    
+    {
+      date_zh:  "2024.10 — 至今",
+      date_en:  "2023 — Present",
+      place:    "公司 / 项目名称",
+      role_zh:  "职位 / 角色",
+      role_en:  "Title / Role",
+      desc_zh:  "洗狗，吹狗，修剪狗，应付难缠的客人和老板，拿着报表算老板利润率",
+      desc_en:  "Write your story here.",
+    },
+  ],
+
+  /* —— 作品集 —— 复制一个 {} 块来新增项目 */
+  works: [
+    {
+      num:     "01",
+      cat:     "Design",
+      title_zh: "项目名称",
+      title_en: "Project Title",
+      desc_zh:  "项目简介——解决了什么问题，你的角色是什么。",
+      desc_en:  "Brief description — what you did and your role.",
+      link:    "",   /* 填入项目链接，留空则不可点击 */
+    },
+    /* 新增项目示例（删掉这行注释即可）：
+    {
+      num:     "02",
+      cat:     "Research",
+      title_zh: "项目名称",
+      title_en: "Project Title",
+      desc_zh:  "描述。",
+      desc_en:  "Description.",
+      link:    "https://github.com/...",
+    },
+    */
+  ],
+
+  /* —— 社交链接 —— 把 url 换成你自己的 */
+  social: {
+    linkedin:  "https://linkedin.com/",
+    instagram: "https://instagram.com/",
+    github_handle:    "@yolanda",
+    instagram_handle: "@yolanda",
+  },
+
+  /* —— 联系方式 —— */
+  contact: {
+    email:   "yolanda.chenye@gmail.com",
+    instagram: "https://instagram.com/",
+    instagram_handle: "@yolanda",
+  },
+
+  /* —— 飞行足迹 ——————————————————————————
+     📊 stats：改数字就行
+     🌍 cities：格式 { name, lon, lat, hub }
+                hub: true = 金色大点（主要枢纽），false = 小白点
+     ✈️  routes：格式 { from, to, domestic }
+                from/to 填 cities 里的 name
+                domestic: true = 国内航线（亮蓝），false = 国际（蓝紫）
+     新增城市：在 cities 加一行
+     新增航线：在 routes 加一行，from/to 填城市名
+  ———————————————————————————————————————— */
+  flights: {
+
+    stats: {
+      count:    147,
+      km:       "486,198",
+      airports: 54,
+      airlines: 32,
+    },
+
+    cities: [
+      { name: "厦门",       lon: 118.08, lat:  24.48, hub: true  },
+      { name: "北京",       lon: 116.40, lat:  39.90, hub: true  },
+      { name: "上海",       lon: 121.47, lat:  31.23, hub: true  },
+      { name: "成都",       lon: 104.07, lat:  30.67, hub: false },
+      { name: "广州",       lon: 113.27, lat:  23.13, hub: false },
+      { name: "深圳",       lon: 114.07, lat:  22.55, hub: false },
+      { name: "香港",       lon: 114.17, lat:  22.32, hub: false },
+      { name: "台北",       lon: 121.53, lat:  25.05, hub: false },
+      { name: "东京",       lon: 139.69, lat:  35.68, hub: false },
+      { name: "首尔",       lon: 126.98, lat:  37.57, hub: false },
+      { name: "新加坡",     lon: 103.82, lat:   1.35, hub: false },
+      { name: "吉隆坡",     lon: 101.70, lat:   3.14, hub: false },
+      { name: "曼谷",       lon: 100.52, lat:  13.75, hub: false },
+      { name: "雅加达",     lon: 106.82, lat:  -6.21, hub: false },
+      { name: "悉尼",       lon: 151.21, lat: -33.87, hub: false },
+      { name: "墨尔本",     lon: 144.96, lat: -37.81, hub: false },
+      { name: "伦敦",       lon:  -0.13, lat:  51.51, hub: true  },
+      { name: "巴黎",       lon:   2.35, lat:  48.85, hub: false },
+      { name: "法兰克福",   lon:   8.68, lat:  50.11, hub: false },
+      { name: "阿姆斯特丹", lon:   4.90, lat:  52.37, hub: false },
+      { name: "苏黎世",     lon:   8.54, lat:  47.38, hub: false },
+      { name: "维也纳",     lon:  16.37, lat:  48.21, hub: false },
+      { name: "罗马",       lon:  12.50, lat:  41.90, hub: false },
+      { name: "马德里",     lon:  -3.70, lat:  40.42, hub: false },
+      { name: "巴塞罗那",   lon:   2.17, lat:  41.39, hub: false },
+      { name: "慕尼黑",     lon:  11.58, lat:  48.14, hub: false },
+      { name: "赫尔辛基",   lon:  24.94, lat:  60.17, hub: false },
+      { name: "斯德哥尔摩", lon:  18.07, lat:  59.33, hub: false },
+      { name: "哥本哈根",   lon:  12.57, lat:  55.68, hub: false },
+      { name: "布鲁塞尔",   lon:   4.35, lat:  50.85, hub: false },
+      { name: "迪拜",       lon:  55.27, lat:  25.20, hub: false },
+      { name: "洛杉矶",     lon: -118.24,lat:  34.05, hub: false },
+      { name: "纽约",       lon:  -74.01,lat:  40.71, hub: false },
+      { name: "旧金山",     lon: -122.42,lat:  37.77, hub: false },
+    ],
+
+    routes: [
+      /* 国内航线 */
+      { from: "厦门",   to: "北京",   domestic: true },
+      { from: "厦门",   to: "上海",   domestic: true },
+      { from: "厦门",   to: "成都",   domestic: true },
+      { from: "厦门",   to: "广州",   domestic: true },
+      { from: "厦门",   to: "深圳",   domestic: true },
+      { from: "北京",   to: "上海",   domestic: true },
+      { from: "北京",   to: "成都",   domestic: true },
+      { from: "北京",   to: "广州",   domestic: true },
+      /* 中国 → 东亚 */
+      { from: "厦门",   to: "台北",   domestic: false },
+      { from: "厦门",   to: "东京",   domestic: false },
+      { from: "北京",   to: "东京",   domestic: false },
+      { from: "北京",   to: "首尔",   domestic: false },
+      { from: "厦门",   to: "香港",   domestic: false },
+      { from: "北京",   to: "香港",   domestic: false },
+      /* 中国 → 东南亚 */
+      { from: "厦门",   to: "新加坡", domestic: false },
+      { from: "北京",   to: "新加坡", domestic: false },
+      { from: "北京",   to: "吉隆坡", domestic: false },
+      { from: "厦门",   to: "曼谷",   domestic: false },
+      { from: "香港",   to: "新加坡", domestic: false },
+      { from: "新加坡", to: "吉隆坡", domestic: false },
+      /* 中国 → 澳洲 */
+      { from: "厦门",   to: "悉尼",   domestic: false },
+      { from: "北京",   to: "悉尼",   domestic: false },
+      { from: "厦门",   to: "墨尔本", domestic: false },
+      /* 中国 → 欧洲 */
+      { from: "厦门",   to: "伦敦",         domestic: false },
+      { from: "厦门",   to: "巴黎",         domestic: false },
+      { from: "厦门",   to: "法兰克福",     domestic: false },
+      { from: "厦门",   to: "罗马",         domestic: false },
+      { from: "北京",   to: "伦敦",         domestic: false },
+      { from: "北京",   to: "巴黎",         domestic: false },
+      { from: "北京",   to: "法兰克福",     domestic: false },
+      { from: "北京",   to: "阿姆斯特丹",   domestic: false },
+      { from: "北京",   to: "苏黎世",       domestic: false },
+      { from: "北京",   to: "巴塞罗那",     domestic: false },
+      { from: "北京",   to: "赫尔辛基",     domestic: false },
+      { from: "北京",   to: "斯德哥尔摩",   domestic: false },
+      { from: "上海",   to: "伦敦",         domestic: false },
+      { from: "上海",   to: "巴黎",         domestic: false },
+      { from: "上海",   to: "法兰克福",     domestic: false },
+      { from: "上海",   to: "马德里",       domestic: false },
+      /* 欧洲内 */
+      { from: "伦敦",   to: "巴黎",         domestic: false },
+      { from: "伦敦",   to: "法兰克福",     domestic: false },
+      { from: "伦敦",   to: "维也纳",       domestic: false },
+      { from: "巴黎",   to: "罗马",         domestic: false },
+      { from: "法兰克福",to:"阿姆斯特丹",   domestic: false },
+      { from: "法兰克福",to:"慕尼黑",       domestic: false },
+      { from: "伦敦",   to: "哥本哈根",     domestic: false },
+      /* 中东转机 */
+      { from: "北京",   to: "迪拜",         domestic: false },
+      /* 中国 → 北美 */
+      { from: "北京",   to: "洛杉矶",       domestic: false },
+      { from: "上海",   to: "纽约",         domestic: false },
+      { from: "北京",   to: "旧金山",       domestic: false },
+    ],
+
+  },
+
+};
+/* ============================================================
+   以下是网站代码，不需要改动
+   ============================================================ */
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:#1d1d1f;font-family:'Noto Sans SC',-apple-system,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:14px;color:#1d1d1f;text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:12px;color:#6e6e73;text-decoration:none;transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:#1d1d1f}
+.lang-btn{font-size:11px;background:none;border:1px solid #d2d2d7;color:#6e6e73;padding:5px 14px;border-radius:20px;cursor:pointer;transition:all .2s}
+.lang-btn:hover{border-color:#1d1d1f;color:#1d1d1f}
+
+.sec{padding:100px 48px;max-width:1100px;margin:0 auto}
+.divider{height:1px;background:#f0f0f2;max-width:1100px;margin:0 auto}
+.sec-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#b0b0b8;margin-bottom:10px}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;color:#1d1d1f;margin-bottom:44px;line-height:1.1}
+
+/* HERO */
+#about{display:grid;grid-template-columns:240px 1fr;gap:80px;align-items:start;padding:100px 48px;max-width:1100px;margin:0 auto}
+.hero-photo{width:100%;aspect-ratio:3/4;background:#f5f5f7;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#c0c0c8;font-size:11px;letter-spacing:.06em}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-coord{margin-top:12px;font-size:10px;letter-spacing:.1em;color:#b0b0b8}
+.hero-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6e6e73;margin-bottom:18px}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(40px,5.5vw,68px);font-weight:700;letter-spacing:-.02em;color:#1d1d1f;line-height:1.05;margin-bottom:6px}
+.hero-name-zh{font-family:'Noto Serif SC',serif;font-size:clamp(18px,2.2vw,26px);font-weight:300;letter-spacing:.45em;color:#6e6e73;margin-bottom:32px}
+.hero-story{font-size:15px;line-height:1.9;color:#3d3d3f;font-weight:300;white-space:pre-line}
+
+/* SKILLS */
+.skill-group{display:flex;align-items:flex-start;padding:13px 0;border-bottom:1px solid #f0f0f2}
+.skill-group:first-child{border-top:1px solid #f0f0f2}
+.skill-group-label{font-size:12px;font-weight:500;color:#1d1d1f;width:110px;flex-shrink:0;padding-top:3px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.skill-tag{font-size:11px;padding:5px 13px;background:#f5f5f7;border-radius:20px;color:#3d3d3f;border:1px solid #e8e8ed}
+
+/* STORY */
+.story-list{max-width:820px}
+.story-item{display:grid;grid-template-columns:180px 1fr;gap:32px;padding:36px 0;border-bottom:1px solid #f0f0f2}
+.story-item:first-child{border-top:1px solid #f0f0f2}
+.story-date{font-size:11px;color:#b0b0b8;letter-spacing:.04em;margin-bottom:5px}
+.story-place{font-size:14px;font-weight:500;color:#1d1d1f}
+.story-role{font-size:12px;color:#6e6e73;margin-bottom:10px}
+.story-desc{font-size:14px;line-height:1.8;color:#3d3d3f;font-weight:300}
+
+/* PORTFOLIO */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pcard{background:#f5f5f7;border-radius:16px;overflow:hidden;transition:transform .28s cubic-bezier(.25,.46,.45,.94),box-shadow .28s;text-decoration:none;display:block}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 20px 56px rgba(0,0,0,.09)}
+.pthumb{width:100%;aspect-ratio:16/9;background:#e8e8ed;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#d2d2d7;transition:background .3s}
+.pcard:hover .pthumb{background:#dcdce2}
+.pbody{padding:20px}
+.pcat{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#b0b0b8;margin-bottom:6px}
+.ptitle{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#1d1d1f;margin-bottom:7px;letter-spacing:-.01em}
+.pdesc{font-size:12px;line-height:1.7;color:#6e6e73}
+.soon-card{background:#fafafa;border:1px dashed #e0e0e5;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:180px}
+.soon-card span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#c0c0c8}
+
+/* SOCIAL */
+.soc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:700px}
+.soc-card{display:flex;align-items:center;gap:16px;padding:20px 24px;background:#f5f5f7;border-radius:16px;text-decoration:none;transition:background .2s,transform .2s;position:relative}
+.soc-card:hover{background:#ebebf0;transform:translateY(-2px)}
+.soc-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.soc-name{font-size:14px;font-weight:500;color:#1d1d1f;margin-bottom:2px}
+.soc-handle{font-size:11px;color:#6e6e73}
+.soc-arr{position:absolute;right:20px;color:#c0c0c8;font-size:16px;transition:transform .2s}
+.soc-card:hover .soc-arr{transform:translateX(3px)}
+
+/* CONTACT */
+.con-tagline{font-size:16px;line-height:1.85;font-weight:300;color:#3d3d3f;max-width:500px;margin-bottom:48px}
+.con-list{max-width:520px}
+.ci{display:flex;align-items:center;gap:24px;padding:20px 0;border-bottom:1px solid #f0f0f2;text-decoration:none;background:none;border-left:none;border-right:none;border-top:none;cursor:pointer;width:100%;text-align:left;transition:padding-left .22s}
+.ci:first-child{border-top:1px solid #f0f0f2}
+.ci:hover{padding-left:10px}
+.cl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#b0b0b8;width:90px;flex-shrink:0;transition:color .2s}
+.cv2{font-size:14px;color:#1d1d1f;flex:1}
+.ca{color:#c0c0c8;font-size:16px;opacity:0;transform:translateX(-6px);transition:all .22s}
+.ci:hover .cl{color:#1d1d1f}.ci:hover .ca{opacity:1;transform:translateX(0)}
+
+/* WECHAT MODAL */
+#wcmodal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.38);backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center}
+#wcmodal.open{display:flex}
+.wc-box{background:#fff;border-radius:22px;padding:44px;text-align:center;box-shadow:0 32px 72px rgba(0,0,0,.14);max-width:320px;width:90%}
+.wc-qr{width:190px;height:190px;background:#f5f5f7;border-radius:12px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#b0b0b8;padding:12px}
+.wc-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1d1d1f;margin-bottom:5px}
+.wc-sub{font-size:12px;color:#6e6e73;margin-bottom:24px}
+.wc-close{font-size:13px;padding:10px 28px;background:#f5f5f7;color:#1d1d1f;border:none;border-radius:980px;cursor:pointer;transition:background .2s}
+.wc-close:hover{background:#e8e8ed}
+
+footer{padding:32px 48px;display:flex;justify-content:space-between;max-width:1100px;margin:0 auto}
+.fc{font-size:11px;color:#b0b0b8}
+
+.fu{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+body.zh .en{display:none!important}
+body.en .zh{display:none!important}
+
+@media(max-width:860px){
+  nav{padding:0 20px}.nav-links{display:none}
+  #about{grid-template-columns:1fr;gap:36px;padding:80px 20px}
+  .sec{padding:72px 20px}
+  .port-grid{grid-template-columns:1fr}
+  .soc-grid{grid-template-columns:1fr}
+  .story-item{grid-template-columns:1fr;gap:6px}
+  #flights{padding:60px 0!important}
+  footer{padding:24px 20px;flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body class="zh">
+
+<div id="wcmodal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="wc-box">
+    <div class="wc-qr">请替换为微信二维码图片</div>
+    <div class="wc-title">微信 · WeChat</div>
+    <div class="wc-sub zh">扫码添加好友</div>
+    <div class="wc-sub en">Scan to connect</div>
+    <button class="wc-close" onclick="document.getElementById('wcmodal').classList.remove('open')">关闭 · Close</button>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">Yolanda Wang</div>
+  <ul class="nav-links">
+    <li><a href="#about" class="zh">关于</a><a href="#about" class="en">About</a></li>
+    <li><a href="#skills" class="zh">技能</a><a href="#skills" class="en">Skills</a></li>
+    <li><a href="#story" class="zh">故事</a><a href="#story" class="en">Story</a></li>
+    <li><a href="#portfolio" class="zh">作品</a><a href="#portfolio" class="en">Works</a></li>
+    <li><a href="#social" class="zh">社交</a><a href="#social" class="en">Social</a></li>
+    <li><a href="#contact" class="zh">联系</a><a href="#contact" class="en">Contact</a></li>
+    <li><a href="#flights" class="zh">航迹</a><a href="#flights" class="en">Flights</a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()">EN / 中文</button>
+</nav>
+
+<!-- HERO -->
+<div id="about" class="fu">
+  <div>
+    <div class="hero-photo" id="photo-wrap">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="8" stroke="#c8c8d0" stroke-width="1.2"/><path d="M4 38c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#c8c8d0" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span style="font-size:11px;color:#c0c0c8;letter-spacing:.06em" class="zh">放入照片</span>
+      <span style="font-size:11px;color:#c0c0c8;letter-spacing:.06em" class="en">Add Photo</span>
+    </div>
+    <div class="hero-coord">24°08′N · 120°40′E · Taichung</div>
+  </div>
+  <div>
+    <div class="hero-eyebrow zh" id="eyebrow-zh"></div>
+    <div class="hero-eyebrow en" id="eyebrow-en"></div>
+    <h1 class="hero-name">Yolanda Wang</h1>
+    <div class="hero-name-zh">王 彦 淳</div>
+    <p class="hero-story zh" id="story-zh"></p>
+    <p class="hero-story en" id="story-en"></p>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div class="sec fu" id="skills">
+  <div class="sec-label">Skills</div>
+  <h2 class="sec-title zh">技能</h2>
+  <h2 class="sec-title en">Skills</h2>
+  <div id="skills-render" style="max-width:720px"></div>
+</div>
+<div class="divider"></div>
+
+<!-- STORY -->
+<div class="sec fu" id="story">
+  <div class="sec-label">Story</div>
+  <h2 class="sec-title zh">我的故事</h2>
+  <h2 class="sec-title en">My Story</h2>
+  <div class="story-list" id="story-render"></div>
+</div>
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<div class="sec fu" id="portfolio">
+  <div class="sec-label">Works</div>
+  <h2 class="sec-title zh">作品集</h2>
+  <h2 class="sec-title en">Portfolio</h2>
+  <div class="port-grid" id="works-render"></div>
+</div>
+<div class="divider"></div>
+
+<!-- SOCIAL -->
+<div class="sec fu" id="social">
+  <div class="sec-label">Connect</div>
+  <h2 class="sec-title zh">找到我</h2>
+  <h2 class="sec-title en">Find Me</h2>
+  <div class="soc-grid" id="social-render"></div>
+</div>
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="sec fu" id="contact">
+  <div class="sec-label">Contact</div>
+  <h2 class="sec-title zh">联系我</h2>
+  <h2 class="sec-title en">Get In Touch</h2>
+  <p class="con-tagline zh">不论是合作邀约、创意交流，还是单纯的问好——都欢迎你来。</p>
+  <p class="con-tagline en">Whether it's a collaboration, a creative exchange, or just saying hello — you're always welcome.</p>
+  <div class="con-list" id="contact-render"></div>
+</div>
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- FLIGHTS -->
+<div id="flights" style="background:#07091a;padding:80px 0;position:relative;overflow:hidden">
+  <div style="max-width:1100px;margin:0 auto;padding:0 48px">
+    <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#4a5280;margin-bottom:10px">Flights</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;color:#fff;margin-bottom:8px;line-height:1.1">
+      <span class="zh">飞行足迹</span><span class="en">Flight Trails</span>
+    </h2>
+    <p style="font-size:13px;color:#4a5280;margin-bottom:40px;letter-spacing:.04em">
+      <span class="zh">147 次航班 · 486,198 km · 54 个机场 · 32 家航空公司</span>
+      <span class="en">147 flights · 486,198 km · 54 airports · 32 airlines</span>
+    </p>
+  </div>
+  <div style="position:relative;width:100%;max-width:1100px;margin:0 auto;padding:0 48px">
+    <canvas id="flight-canvas" style="width:100%;border-radius:12px;display:block;cursor:crosshair"></canvas>
+    <div id="flight-tooltip" style="position:absolute;background:rgba(10,15,40,.92);border:1px solid #2a3060;border-radius:8px;padding:8px 14px;font-size:12px;color:#c8d0f0;pointer-events:none;display:none;letter-spacing:.04em;white-space:nowrap;backdrop-filter:blur(8px)"></div>
+  </div>
+  <div style="max-width:1100px;margin:20px auto 0;padding:0 48px;display:flex;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:#4a5280;letter-spacing:.06em">
+      <div style="width:20px;height:1.5px;background:linear-gradient(to right,#3a4fd4,#a0aaff)"></div>
+      <span class="zh">国际航线</span><span class="en">International</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:#4a5280;letter-spacing:.06em">
+      <div style="width:20px;height:1.5px;background:linear-gradient(to right,#4a9eff,#b0d4ff)"></div>
+      <span class="zh">国内航线</span><span class="en">Domestic</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:#4a5280;letter-spacing:.06em">
+      <div style="width:8px;height:8px;border-radius:50%;background:#f5c842"></div>
+      <span class="zh">途经城市</span><span class="en">Cities</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="fc">© 2025 王彦淳 Yolanda Wang</span>
+  <span class="fc">Made with ♥</span>
+</footer>
+
+<script>
+/* ── 渲染函数 ── */
+function render() {
+  const isEn = document.body.classList.contains('en');
+
+  /* bio */
+  const ez = document.getElementById('eyebrow-zh'); ez.textContent = DATA.bio.eyebrow_zh; ez.style.display = DATA.bio.eyebrow_zh ? '' : 'none';
+  const ee = document.getElementById('eyebrow-en'); ee.textContent = DATA.bio.eyebrow_en; ee.style.display = DATA.bio.eyebrow_en ? '' : 'none';
+  document.getElementById('story-zh').textContent = DATA.bio.story_zh;
+  document.getElementById('story-en').textContent = DATA.bio.story_en;
+
+  /* skills */
+  document.getElementById('skills-render').innerHTML =
+    Object.entries(DATA.skills).map(([label, tags]) => `
+      <div class="skill-group">
+        <div class="skill-group-label">${label}</div>
+        <div class="skill-tags">
+          ${tags.length ? tags.map(t => `<span class="skill-tag">${t}</span>`).join('') : '<span style="font-size:11px;color:#c0c0c8;font-style:italic">—</span>'}
+        </div>
+      </div>`).join('');
+
+  /* story */
+  document.getElementById('story-render').innerHTML =
+    DATA.stories.length
+      ? DATA.stories.map(s => `
+          <div class="story-item">
+            <div>
+              <div class="story-date">${isEn ? s.date_en : s.date_zh}</div>
+              <div class="story-place">${s.place}</div>
+            </div>
+            <div>
+              <div class="story-role">${isEn ? s.role_en : s.role_zh}</div>
+              <p class="story-desc">${isEn ? s.desc_en : s.desc_zh}</p>
+            </div>
+          </div>`).join('')
+      : '<p style="color:#b0b0b8;font-size:13px">暂无内容</p>';
+
+  /* works */
+  const soons = `
+    <div class="soon-card">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#d2d2d7" stroke-width="1"/><path d="M12 7v5l3 3" stroke="#d2d2d7" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span class="zh">更多作品即将上线</span><span class="en">More works coming soon</span>
+    </div>
+    <div class="soon-card">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#d2d2d7" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span class="zh">敬请期待</span><span class="en">Stay tuned</span>
+    </div>`;
+  document.getElementById('works-render').innerHTML =
+    DATA.works.map(w => `
+      <${w.link ? `a href="${w.link}" target="_blank"` : 'div'} class="pcard">
+        <div class="pthumb">${w.num}</div>
+        <div class="pbody">
+          <div class="pcat">${w.cat}</div>
+          <div class="ptitle">${isEn ? w.title_en : w.title_zh}</div>
+          <div class="pdesc">${isEn ? w.desc_en : w.desc_zh}</div>
+        </div>
+      </${w.link ? 'a' : 'div'}>`).join('') + soons;
+
+  /* social */
+  const sc = DATA.social;
+  document.getElementById('social-render').innerHTML = `
+    <a href="${sc.github}" target="_blank" class="soc-card">
+      <div class="soc-icon" style="background:#f0ebff"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7b2fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg></div>
+      <div><div class="soc-name">GitHub</div><div class="soc-handle">${sc.github_handle}</div></div>
+      <div class="soc-arr">›</div>
+    </a>
+    <a href="${sc.linkedin}" target="_blank" class="soc-card">
+      <div class="soc-icon" style="background:#e6f4ff"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0077b5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+      <div><div class="soc-name">LinkedIn</div><div class="soc-handle zh">领英</div><div class="soc-handle en">Yolanda Wang</div></div>
+      <div class="soc-arr">›</div>
+    </a>
+    <a href="${sc.xiaohongshu}" target="_blank" class="soc-card">
+      <div class="soc-icon" style="background:#fff0f4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fe2c55" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+      <div><div class="soc-name">小红书</div><div class="soc-handle">RED / XHS</div></div>
+      <div class="soc-arr">›</div>
+    </a>
+    <a href="${sc.instagram}" target="_blank" class="soc-card">
+      <div class="soc-icon" style="background:#fff8e6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="#e1306c" stroke="none"/></svg></div>
+      <div><div class="soc-name">Instagram</div><div class="soc-handle">${sc.instagram_handle}</div></div>
+      <div class="soc-arr">›</div>
+    </a>`;
+
+  /* contact */
+  const ct = DATA.contact;
+  document.getElementById('contact-render').innerHTML = `
+    <a href="mailto:${ct.email}" class="ci">
+      <span class="cl">Email</span><span class="cv2">${ct.email}</span><span class="ca">›</span>
+    </a>
+    <button class="ci" onclick="document.getElementById('wcmodal').classList.add('open')">
+      <span class="cl">WeChat</span>
+      <span class="cv2 zh">点击查看二维码</span>
+      <span class="cv2 en">Tap for QR code</span>
+      <span class="ca">›</span>
+    </button>
+    <a href="${ct.instagram}" target="_blank" class="ci">
+      <span class="cl">Instagram</span><span class="cv2">${ct.instagram_handle}</span><span class="ca">›</span>
+    </a>`;
+}
+
+function toggleLang() {
+  const isZh = document.body.classList.contains('zh');
+  document.body.className = isZh ? 'en' : 'zh';
+  render();
+}
+
+/* scroll fade-in */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: .1 });
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+/* ════════════════════════════════════
+   FLIGHT MAP
+════════════════════════════════════ */
+(function(){
+
+/* 从 DATA 读取飞行数据 */
+const fd = DATA.flights;
+
+/* 统计数字渲染 */
+const statsEl = document.getElementById('flight-stats');
+if(statsEl){
+  const isEn = document.body.classList.contains('en');
+  statsEl.innerHTML = isEn
+    ? `${fd.stats.count} flights · ${fd.stats.km} km · ${fd.stats.airports} airports · ${fd.stats.airlines} airlines`
+    : `${fd.stats.count} 次航班 · ${fd.stats.km} km · ${fd.stats.airports} 个机场 · ${fd.stats.airlines} 家航空公司`;
+}
+
+/* 把城市数组转成 name→index 的查找表 */
+const CITIES = fd.cities.map(c => [c.name, c.lon, c.lat, c.hub]);
+const cityIndex = {};
+fd.cities.forEach((c,i) => cityIndex[c.name] = i);
+
+/* 把 routes 从名字转成索引 */
+const ROUTES = fd.routes
+  .filter(r => cityIndex[r.from] !== undefined && cityIndex[r.to] !== undefined)
+  .map(r => [cityIndex[r.from], cityIndex[r.to], r.domestic]);
+
+const canvas = document.getElementById('flight-canvas');
+if(!canvas) return;
+const ctx = canvas.getContext('2d');
+const tooltip = document.getElementById('flight-tooltip');
+
+let W, H, dpr = window.devicePixelRatio||1;
+let particles = [];
+let started = false;
+
+function resize(){
+  const rect = canvas.parentElement.getBoundingClientRect();
+  W = rect.width;
+  H = W * 0.52;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.height = H + 'px';
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.scale(dpr, dpr);
+  particles = [];
+  initParticles();
+}
+
+function project(lon, lat){
+  const x = (lon + 180) / 360 * W;
+  const latRad = lat * Math.PI / 180;
+  const mercN = Math.log(Math.tan(Math.PI/4 + latRad/2));
+  const y = H/2 - (mercN / (2*Math.PI)) * H * 1.2 + H*0.08;
+  return [x, y];
+}
+
+function ctrlPt(x1,y1,x2,y2){
+  const mx=(x1+x2)/2, my=(y1+y2)/2;
+  const dx=x2-x1, dy=y2-y1;
+  const len=Math.sqrt(dx*dx+dy*dy)||1;
+  const lift = Math.min(len*0.35, H*0.28);
+  return [mx - dy/len*lift, my + dx/len*lift - lift*0.6];
+}
+
+function initParticles(){
+  particles = ROUTES.map((r,i) => ({
+    r, i, t: Math.random(),
+    speed: 0.002 + Math.random()*0.002,
+    alpha: 0,
+  }));
+}
+
+function bezierPt(x1,y1,cx,cy,x2,y2,t){
+  const mt=1-t;
+  return [mt*mt*x1+2*mt*t*cx+t*t*x2, mt*mt*y1+2*mt*t*cy+t*t*y2];
+}
+
+const LAND = [
+  [[-168,72],[-140,70],[-95,72],[-85,70],[-60,48],[-60,45],[-65,44],[-80,43],[-83,42],[-76,34],[-80,25],[-90,30],[-97,26],[-110,23],[-118,34],[-122,37],[-124,46],[-130,55],[-140,60],[-155,60],[-168,65]],
+  [[-80,12],[-65,10],[-60,5],[-50,-5],[-35,-8],[-35,-25],[-50,-35],[-65,-55],[-68,-55],[-75,-50],[-80,-40],[-80,-25],[-75,-15],[-80,0],[-80,12]],
+  [[-10,36],[0,36],[10,38],[20,38],[30,42],[35,42],[28,56],[25,65],[15,70],[5,58],[0,52],[-5,48],[-10,44],[-10,36]],
+  [[-18,15],[0,15],[10,5],[15,0],[20,-10],[25,-20],[30,-30],[25,-35],[15,-30],[10,-25],[0,-20],[-10,-15],[-18,5],[-18,15]],
+  [[25,42],[35,38],[45,28],[55,22],[60,22],[68,22],[80,8],[85,8],[100,5],[105,10],[110,15],[120,20],[125,25],[130,30],[138,35],[140,42],[135,48],[130,55],[120,55],[110,48],[100,52],[90,52],[80,55],[65,52],[50,42],[40,42],[35,42]],
+  [[73,40],[80,45],[90,48],[100,52],[110,50],[120,53],[128,48],[130,42],[122,32],[118,24],[108,20],[100,22],[95,25],[85,28],[78,35],[73,40]],
+  [[115,-22],[125,-15],[135,-12],[145,-15],[150,-22],[152,-28],[148,-38],[138,-38],[128,-33],[115,-35],[115,-22]],
+  [[95,20],[100,15],[105,5],[108,2],[112,2],[115,5],[120,5],[115,15],[108,20],[100,20],[95,20]],
+  [[130,31],[132,34],[135,35],[138,36],[140,42],[135,44],[130,44],[129,34],[130,31]],
+  [[-5,50],[0,51],[2,52],[0,58],[-5,58],[-5,50]],
+];
+
+function drawBg(){
+  ctx.fillStyle='#07091a'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='rgba(40,55,120,0.2)'; ctx.lineWidth=0.4;
+  for(let lon=-180;lon<=180;lon+=30){
+    const [x]=project(lon,0);
+    ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();
+  }
+  for(let lat=-60;lat<=80;lat+=30){
+    const y=project(0,lat)[1];
+    ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();
+  }
+}
+
+function drawMap(){
+  ctx.strokeStyle='rgba(60,75,160,0.35)';
+  ctx.fillStyle='rgba(20,28,70,0.5)';
+  ctx.lineWidth=0.6;
+  LAND.forEach(poly=>{
+    ctx.beginPath();
+    poly.forEach(([lon,lat],i)=>{
+      const [x,y]=project(lon,lat);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.closePath();ctx.fill();ctx.stroke();
+  });
+}
+
+function drawRoutes(progress){
+  const count=Math.floor(progress*ROUTES.length);
+  ROUTES.forEach((r,i)=>{
+    if(i>=count) return;
+    const [x1,y1]=project(CITIES[r[0]][1],CITIES[r[0]][2]);
+    const [x2,y2]=project(CITIES[r[1]][1],CITIES[r[1]][2]);
+    const [cx,cy]=ctrlPt(x1,y1,x2,y2);
+    const grad=ctx.createLinearGradient(x1,y1,x2,y2);
+    if(r[2]){
+      grad.addColorStop(0,'rgba(74,158,255,0.0)');
+      grad.addColorStop(0.5,'rgba(74,158,255,0.55)');
+      grad.addColorStop(1,'rgba(74,158,255,0.0)');
+    } else {
+      grad.addColorStop(0,'rgba(58,79,212,0.0)');
+      grad.addColorStop(0.5,'rgba(120,140,255,0.5)');
+      grad.addColorStop(1,'rgba(58,79,212,0.0)');
+    }
+    ctx.beginPath();ctx.moveTo(x1,y1);
+    ctx.quadraticCurveTo(cx,cy,x2,y2);
+    ctx.strokeStyle=grad;ctx.lineWidth=0.8;ctx.stroke();
+  });
+}
+
+function drawParticles(){
+  particles.forEach(p=>{
+    const r=ROUTES[p.i];
+    const [x1,y1]=project(CITIES[r[0]][1],CITIES[r[0]][2]);
+    const [x2,y2]=project(CITIES[r[1]][1],CITIES[r[1]][2]);
+    const [cx,cy]=ctrlPt(x1,y1,x2,y2);
+    const [px,py]=bezierPt(x1,y1,cx,cy,x2,y2,p.t);
+    ctx.beginPath();ctx.arc(px,py,1.6,0,Math.PI*2);
+    ctx.fillStyle=r[2]?`rgba(160,210,255,${p.alpha})`:`rgba(180,190,255,${p.alpha})`;
+    ctx.fill();
+    p.t+=p.speed;
+    if(p.t>1){p.t=0;p.alpha=0;}
+    else if(p.t<0.1) p.alpha=p.t/0.1*0.9;
+    else if(p.t>0.9) p.alpha=(1-p.t)/0.1*0.9;
+    else p.alpha=0.9;
+  });
+}
+
+function drawCities(){
+  CITIES.forEach(([name,lon,lat,hub])=>{
+    const [x,y]=project(lon,lat);
+    if(x<0||x>W||y<0||y>H) return;
+    const g=ctx.createRadialGradient(x,y,0,x,y,hub?10:6);
+    g.addColorStop(0,hub?'rgba(245,200,66,0.6)':'rgba(200,210,255,0.5)');
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,hub?10:6,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,hub?3:1.8,0,Math.PI*2);
+    ctx.fillStyle=hub?'#f5c842':'rgba(200,215,255,0.85)';ctx.fill();
+  });
+}
+
+let startTime=null, animating=false;
+function animate(ts){
+  if(!startTime) startTime=ts;
+  const progress=Math.min((ts-startTime)/3000,1);
+  drawBg();drawMap();drawRoutes(progress);drawCities();drawParticles();
+  if(progress<1) requestAnimationFrame(animate);
+  else { animating=true; requestAnimationFrame(loop); }
+}
+function loop(){
+  drawBg();drawMap();drawRoutes(1);drawCities();drawParticles();
+  requestAnimationFrame(loop);
+}
+
+canvas.addEventListener('mousemove',e=>{
+  const rect=canvas.getBoundingClientRect();
+  const mx=e.clientX-rect.left, my=e.clientY-rect.top;
+  let found=null;
+  CITIES.forEach(([name,lon,lat,hub])=>{
+    const [x,y]=project(lon,lat);
+    if(Math.sqrt((mx-x)**2+(my-y)**2)<(hub?12:8)) found=name;
+  });
+  if(found){
+    tooltip.style.display='block';
+    tooltip.style.left=(mx+14)+'px';
+    tooltip.style.top=(my-10)+'px';
+    tooltip.textContent=found;
+  } else { tooltip.style.display='none'; }
+});
+canvas.addEventListener('mouseleave',()=>tooltip.style.display='none');
+
+resize();
+window.addEventListener('resize',resize);
+const io=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!started){
+    started=true; startTime=null;
+    requestAnimationFrame(animate);
+  }
+},{threshold:0.2});
+io.observe(canvas);
+
+})();
+render();
+</script>
+</body>
+</html>
